@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int A[3][3], B[3][3], R[3][3];
+    int opcion;
+
+    // Entrada matriz A
+    cout << "Ingrese los valores de la matriz A (3x3):\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << "A[" << i << "][" << j << "]: ";
+            cin >> A[i][j];
+        }
+    }
+
+    // Entrada matriz B
+    cout << "\nIngrese los valores de la matriz B (3x3):\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << "B[" << i << "][" << j << "]: ";
+            cin >> B[i][j];
+        }
+    }
+
+    // Menú
+    cout << "\nMENU DE OPERACIONES\n";
+    cout << "1. Suma\n";
+    cout << "2. Resta\n";
+    cout << "3. Multiplicacion\n";
+    cout << "Seleccione una opcion: ";
+    cin >> opcion;
+
+    switch (opcion) {
+
+        case 1: // SUMA
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    R[i][j] = A[i][j] + B[i][j];
+            cout << "\nResultado de la SUMA:\n";
+            break;
+
+        case 2: // RESTA
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    R[i][j] = A[i][j] - B[i][j];
+            cout << "\nResultado de la RESTA:\n";
+            break;
+
+        case 3: // MULTIPLICACION
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    R[i][j] = 0;
+                    for (int k = 0; k < 3; k++) {
+                        R[i][j] += A[i][k] * B[k][j];
+                    }
+                }
+            }
+            cout << "\nResultado de la MULTIPLICACION:\n";
+            break;
+
+        default:
+            cout << "Opcion no valida";
+            return 0;
+    }
+
+    // Mostrar matriz resultado
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << R[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
